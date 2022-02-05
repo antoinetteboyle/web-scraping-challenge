@@ -10,24 +10,79 @@
 </head>
 
 <body>
-  <div class="container-fluid">
+    
     <div class="jumbotron text-center">
       <h1>Mission to Mars...</h1>
-      <p>.....................</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
     </div>
     
-    <h1>Latest Mars News...</h1>
+    <div  style="padding: 15px;">
+    <h1><b>Latest Mars News...</b></h1>
     <h3> {{ mars.news_title }}</h3>
     <h3> {{ mars.news_paragraph }}</h3>
-    <h1>Featured Mars Image...</h1>
-    <img src="{{ mars.featured_image_url }}" alt="Featured Mars Image">
-    <h2> Mars Facts:</h2>
-    <h3>{{ mars.tables }}</h3>
-    <h1>Mars Hemispheres...</h1>
-    <h3>{{ mars.hemisphere_image_urls }}</h3>
+    </div>
+
+  <br>
+
+<div class="container-fluid">
+
+  <div class="row justify-content-between">
+    <div class="col-sm-6">
+    <figure>
+    <h1><b>Featured Mars Image...</b></h1>
+    <img src="{{ mars.featured_image_url }}" class="img-fluid" alt="Featured Mars Image" width="500" height="300" style="padding: 2px; float:left; border:2px solid black;">
+    </figure>
+    </div>
+
+    <div style="display: block;" class="col-sm-6">
+    <h2><b>Mars Facts:</b></h2>
+    {{ mars.tables|safe }}
+    </div>
   </div>
+
+  <h1 style="text-align: center;padding: 1px;"><b> Mars Hemispheres...</b></h1>
+
+  <div style="border: 2px solid grey;padding: 10px;" class="row justify-content-between">
+    
+  <div style="border: 1px solid black;padding: 2px;justify-content: center;" class="col-sm-3">
+    <figure>
+    <img src="{{ mars.hemisphere_image_urls[0]['img_url'] }}" class="img-fluid" alt="Hemisphere Image1" width="260" height="260" style="display: block;margin-left: auto;margin-right: auto;border:2px solid black;">
+    <figcaption style="text-align: center;padding: 1px;">
+     {{ mars.hemisphere_image_urls[0]['title'] }}
+    </figcaption> 
+    </figure>
   </div>
+  
+  <div style="border: 1px solid black;padding: 2px;justify-content: center;" class="col-sm-3">
+    <figure>
+    <img src="{{ mars.hemisphere_image_urls[1]['img_url'] }}" class="img-fluid" alt="Hemisphere Image2" width="260" height="260" style="display: block;margin-left: auto;margin-right: auto; border:2px solid black;">
+    <figcaption style="text-align: center;padding: 1px;">
+     {{ mars.hemisphere_image_urls[1]['title'] }}
+    </figcaption> 
+    </figure>
+  </div>
+
+  <div style="border: 1px solid black;padding: 2px;justify-content: center;" class="col-sm-3">
+    <figure>
+    <img src="{{ mars.hemisphere_image_urls[2]['img_url'] }}" class="img-fluid" alt="Hemisphere Image3" width="260" height="260" style="display: block;margin-left: auto;margin-right: auto; border:2px solid black;">
+    <figcaption style="text-align: center;padding: 1px;">
+     {{ mars.hemisphere_image_urls[2]['title'] }}
+    </figcaption> 
+    </figure>
+  </div>
+
+  <div style="border: 1px solid black;padding: 2px;justify-content: center;" class="col-sm-3">
+    <figure>
+    <img src="{{ mars.hemisphere_image_urls[3]['img_url'] }}" class="img-fluid" alt="Hemisphere Image4" width="260" height="260" style="display: block;margin-left: auto;margin-right: auto;border:2px solid black;">
+    <figcaption style="text-align: center;padding: 1px;">
+     {{ mars.hemisphere_image_urls[3]['title'] }}
+    </figcaption> 
+    </figure>
+  </div>
+
+  </div>
+</div>
+  
 </body>
 
 </html>

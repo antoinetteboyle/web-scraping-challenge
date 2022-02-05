@@ -18,9 +18,12 @@ def home():
     # Return template and data
     return render_template("index.html", mars=mars_data)
 
-# Route that will trigger the scrape function
+# Route that button will trigger the scrape function
 @app.route("/scrape")
+
 def scrape():
+    #?
+    mars_data = mongo.db.collection.find_one()
 
     # Run the scrape function and save the results to a variable
     mars_data = scrape_mars.scrape_info()

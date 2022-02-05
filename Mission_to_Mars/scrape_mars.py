@@ -25,15 +25,18 @@ def scrape_info():
     soup = bs(html, 'html.parser')
     # Find the featured image
     featured_image_url = soup.find_all('img')[1]['src']
-    featured_image_url = url_image + "/" + featured_image_url  
+    featured_image_url = url_image + "/" + featured_image_url
 
     #MARS FACTS:
     #Use Pandas to scrape the table
     url = 'https://galaxyfacts-mars.com'
-    tables = pd.read_html(url)[0]
-    tables = tables[:1]
-
-
+    mars_facts = pd.read_html(url,header=0)[0]
+    df = pd.DataFrame(mars_facts)
+    #df.columns['Comparison','Mars','Earth']
+    df = df.reset_index(drop=True)
+    df = df.set_index("Mars - Earth Comparison")
+    tables = df.to_html(classes="table table-striped")
+    
     # Obtain high resolution images for each of Mar's hemispheres. 
     url = 'https://marshemispheres.com/'
     browser.visit(url)
@@ -84,4 +87,3 @@ def scrape_info():
     }
     # Return results
     return mars_data
-    
