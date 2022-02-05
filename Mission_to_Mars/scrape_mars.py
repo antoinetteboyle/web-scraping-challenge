@@ -30,14 +30,8 @@ def scrape_info():
     #MARS FACTS:
     #Use Pandas to scrape the table
     url = 'https://galaxyfacts-mars.com'
-    facts_mars = pd.read_html(url,header=0)
-    facts_mars = pd.concat(facts_mars)
-    del facts_mars['Equatorial Diameter:']
-    del facts_mars['6,792 km']
-    facts_mars.drop_duplicates(subset=None, keep=False, inplace=True, ignore_index=False)
-    df = pd.DataFrame(facts_mars)
-    df1 = df.reset_index(drop=True)
-    tables = df1.set_index("Mars - Earth Comparison")
+    tables = pd.read_html(url)[0]
+    tables = tables[:1]
 
 
     # Obtain high resolution images for each of Mar's hemispheres. 
